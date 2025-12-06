@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <title>Anurag Portfolio Landing Page</title>
+   <!-- Preconnect for Google Fonts -->
+   <link href="https://fonts.googleapis.com" rel="preconnect" />
+   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+
+   <!-- Poppins Font -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+   <!-- Material Symbols Outlined -->
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+   <!-- Tailwind CSS with forms & typography plugins -->
+   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+   <script>
+      tailwind.config = {
+         darkMode: "class",
+         theme: {
+            extend: {
+               colors: {
+                  primary: "#4F46E5",          // Vibrant blue/indigo for primary actions
+                  "background-light": "#F3F4F6", // Light gray for light mode
+                  "background-dark": "#0D1117",  // Very dark blue/almost black for dark mode
+               },
+               fontFamily: {
+                  display: ["Poppins", "sans-serif"],
+               },
+               borderRadius: {
+                  DEFAULT: "1rem", // 16px
+               },
+            },
+         },
+      };
+   </script>
+
+   <style>
+      /* body {
+         @apply bg-background-light dark:bg-background-dark antialiased
+      } */
+      html {
+         scroll-behavior: smooth;
+      }
+
+      .text-gradient {
+         background: linear-gradient(to right, #63d5ff, #8c52ff);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-clip: text;
+         text-fill-color: transparent;
+      }
+
+      .skill-box {
+         padding: 12px;
+         background: rgba(255, 255, 255, 0.4);
+         backdrop-filter: blur(10px);
+         border-radius: 12px;
+         transition: 0.3s;
+      }
+
+      .dark .skill-box {
+         background: rgba(31, 41, 55, 0.4);
+      }
+
+      .skill-box:hover {
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+         transform: translateY(-2px);
+      }
+
+      .skill-icon {
+         height: 40px;
+         width: 40px;
+      }
+
+      .github-icon-bg {
+         background-color: #333;
+      }
+
+      .linkedin-icon-bg {
+         background-color: #0A66C2;
+      }
+
+      .email-icon-bg {
+         background-color: #EA4335;
+      }
+
+      .phone-icon-bg {
+         background-color: #25D366;
+      }
+   </style>
+
+</head>
+
+<body class="font-display bg-background-light dark:bg-transparent text-white/80 dark:text-white/80">
+   <div class="min-h-screen w-full flex flex-col items-center justify-center p-4 lg:p-8 relative overflow-hidden">
+      <div class="absolute inset-0 bg-background-light dark:bg-background-dark antialiased"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-20 bg-repeat-x"
+         style="background-image: linear-gradient(to right, rgba(128, 90, 213, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(128, 90, 213, 0.2) 1px, transparent 1px); background-size: 40px 40px;">
+      </div>
+      <div class="w-full mx-auto z-10">
+         <header class="w-full mb-10">
+            <nav class="sticky top-0 left-0 z-50">
+               <div
+                  class="flex items-center justify-between bg-slate-200/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-300 dark:border-slate-700 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full mx-auto max-w-7xl">
+
+                  <!-- Logo -->
+                  <a class="flex items-center gap-3" href="#">
+                     <div class="flex items-end space-x-0.5">
+                        <div class="w-2 h-4 bg-primary rounded-sm"></div>
+                        <div class="w-2 h-2.5 bg-primary -mt-2 rounded-sm"></div>
+                        <div class="w-2 h-4 bg-primary rounded-sm"></div>
+                     </div>
+                     <span class="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-200">Mahadi H.
+                        Milon</span>
+                  </a>
+
+                  <!-- Navigation & Theme -->
+                  <div class="flex items-center gap-4 sm:gap-8">
+                     <!-- Menu Links -->
+                     <ul
+                        class="hidden md:flex items-center gap-4 lg:gap-6 text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300">
+                        <li><a href="#about"
+                              class="hover:text-primary dark:hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#technologies"
+                              class="hover:text-primary dark:hover:text-primary transition-colors">Technologies</a></li>
+                        <li><a href="#projects"
+                              class="hover:text-primary dark:hover:text-primary transition-colors">Projects</a>
+                        </li>
+                        <li><a href="#contact"
+                              class="hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
+                        </li>
+                     </ul>
+
+                     <!-- Hamburger for Mobile -->
+                     <button id="mobile-menu-button"
+                        class="md:hidden text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined">menu</span>
+                     </button>
+
+                     <!-- Theme Switch Button -->
+                     <button id="theme-toggle" aria-label="Toggle theme"
+                        class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">
+                        <span id="theme-icon" class="material-symbols-outlined">light_mode</span>
+                     </button>
+                  </div>
+
+               </div>
+
+               <!-- Mobile Menu -->
+               <ul id="mobile-menu"
+                  class="md:hidden hidden flex-col bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 mt-2 rounded-lg py-2 space-y-2 px-4">
+                  <li><a href="#about"
+                        class="block text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary transition-colors">About</a>
+                  </li>
+                  <li><a href="#technologies"
+                        class="block text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary transition-colors">Technologies</a>
+                  </li>
+                  <li><a href="#projects"
+                        class="block text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary transition-colors">Projects</a>
+                  </li>
+                  <li><a href="#contact"
+                        class="block text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
+                  </li>
+               </ul>
+            </nav>
+         </header>
+
+
+         <section class="bg-background-light dark:bg-background-dark antialiased">
+            <section
+               class="min-h-screen flex items-center justify-center p-4 lg:p-8 overflow-hidden relative font-display">
+               <div
+                  class="absolute top-1/4 left-1/2 w-48 h-48 bg-blue-900/50 dark:bg-blue-900/30 rounded-full blur-3xl transform -translate-x-1/4 -translate-y-1/4">
+               </div>
+               <div
+                  class="absolute bottom-1/4 right-1/2 w-48 h-48 bg-purple-900/50 dark:bg-purple-900/30 rounded-full blur-3xl transform translate-x-1/4 translate-y-1/4">
+               </div>
+               <div
+                  class="absolute top-1/2 left-1/3 w-24 h-24 bg-indigo-500/20 dark:bg-indigo-500/10 rounded-lg blur-2xl transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+               </div>
+               <div class="container mx-auto z-10">
+                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                     <div class="text-center lg:text-left">
+                        <div class="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                           <span class="relative flex h-3 w-3">
+                              <span
+                                 class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                           </span>
+                           <p class="text-sm font-medium text-gray-600 dark:text-gray-300">Available for work</p>
+                        </div>
+                        <h1
+                           class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white leading-tight">
+                           Junior MERN
+                           <span class="block text-gradient">Developer</span>
+                        </h1>
+                        <p class="mt-6 text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-md mx-auto lg:mx-0">
+                           Skilled in React.js and modern JavaScript, passionate about building clean, responsive, and
+                           user-friendly web interfaces. Turning ideas into smooth, interactive experiences.
+                        </p>
+                        <div class="mt-10 flex justify-center lg:justify-start space-x-8">
+                           <div>
+                              <p class="text-3xl font-bold text-gradient">1+</p>
+                              <p class="text-sm text-gray-500 dark:text-gray-400">Years Exp.</p>
+                           </div>
+                           <div>
+                              <p class="text-3xl font-bold text-gradient">10+</p>
+                              <p class="text-sm text-gray-500 dark:text-gray-400">Projects</p>
+                           </div>
+                           <div>
+                              <p class="text-3xl font-bold text-gradient">5+</p>
+                              <p class="text-sm text-gray-500 dark:text-gray-400">Technologies</p>
+                           </div>
+                        </div>
+                        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                           <a href="#" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 
+                                     bg-gradient-to-r from-blue-600 to-purple-600 
+                                     text-white font-semibold rounded-xl shadow-lg
+                                     hover:from-blue-700 hover:to-purple-700 
+                                     transition-all duration-300">
+                              View My Work
+                           </a>
+
+                           <a href="#" class="w-full sm:w-auto flex items-center justify-center px-6 py-3
+                                              font-semibold rounded-xl text-primary
+                                              bg-white/30 dark:bg-gray-800/40 backdrop-blur-md
+                                              border border-white/20 shadow-md
+                                              hover:shadow-[0_0_7px_#8c52ff] transition-shadow duration-300">
+                              Download Resume
+                           </a>
+
+
+                        </div>
+                     </div>
+
+                     <div class="relative flex justify-center items-center mt-10 lg:mt-0">
+                        <div class="relative w-72 h-72 md:w-96 md:h-96">
+
+                           <!-- Badge 1 -->
+                           <div class="absolute top-4 right-0 transform translate-x-1/4 -translate-y-1/4 z-10">
+                              <div
+                                 class="flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full shadow-md text-sm font-medium">
+                                 <img class="w-4 h-4"
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                                    alt="">
+                                 JavaScript
+                              </div>
+                           </div>
+
+                           <!-- Badge 2 -->
+                           <div class="absolute top-16 left-6 -translate-x-1/2 transform  z-10">
+                              <div
+                                 class="flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full shadow-md text-sm font-medium">
+                                 <img class="w-4 h-4"
+                                    src="https://i.ibb.co.com/4R6zrCd9/becomeamernstackdeveloper-mobile.png" alt="">
+                                 MERN stack
+                              </div>
+                           </div>
+
+                           <!-- Badge 3 -->
+                           <div class="absolute bottom-4 left-0 transform -translate-x-1/4 z-10">
+                              <div
+                                 class="flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full shadow-md text-sm font-medium">
+                                 🎨 Parfect UI
+                              </div>
+                           </div>
+
+                           <!-- OUTER FRAME WITH IMAGE -->
+                           <div
+                              class="w-full h-full p-2 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-lg relative">
+
+                              <div class="w-full h-full bg-background-light dark:bg-background-dark p-2 rounded-lg">
+                                 <img alt="Portrait of a young frontend developer"
+                                    class="w-full h-full object-cover rounded-lg"
+                                    src="https://i.ibb.co.com/NnsHYG1Q/IMG-20251129-WA0013-removebg-preview.png" />
+                              </div>
+
+                              <!-- ⭐ CODE ICON (ADDED) -->
+                              <div
+                                 class="absolute -bottom-5 -right-5 flex items-center justify-center h-12 w-12 bg-background-light dark:bg-background-dark rounded-lg shadow-lg">
+                                 <svg class="h-10 w-10 text-primary" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round"
+                                       stroke-linejoin="round"></path>
+                                 </svg>
+                              </div>
+
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+         </section>
+
+
+
+      </div>
+   </div>
+   <style>
+      .clip-path-polygon-\[15\%_0\,_85\%_0\,_100\%_100\%\,_0\%_100\%\] {
+         clip-path: polygon(15% 0, 85% 0, 100% 100%, 0% 100%);
+      }
+   </style>
+   <!-- About -->
+
+   <section id="about"
+      class=" font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 antialiased">
+      <div class="relative min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+
+         <!-- Background + Radial Glow -->
+         <div class="absolute inset-0 bg-background-light dark:bg-[#110e19] z-0">
+            <div
+               class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))]">
+            </div>
+         </div>
+
+         <div class="w-full mx-auto z-10 py-10">
+
+            <!-- Heading -->
+            <header class="mb-16">
+               <div class="flex items-center justify-center gap-6">
+                  <!-- Left line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-l from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+                  <!-- Title with gradient text -->
+                  <h1
+                     class="text-center text-sm font-bold tracking-widest uppercase bg-clip-text text-transparent 
+                           bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-cyan-400 dark:via-purple-400 dark:to-pink-400">
+                     About
+                  </h1>
+
+                  <!-- Right line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-r from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+               </div>
+            </header>
+
+
+            <!-- Content -->
+            <main>
+               <div class="mx-auto">
+                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                     <!-- Left Column -->
+                     <div class="lg:col-span-1">
+                        <div
+                           class="bg-white/80 dark:bg-slate-900/70 p-8 rounded-lg text-center shadow-lg backdrop-blur-sm border border-gray-200 dark:border-slate-800 py-10">
+                           <div class="relative inline-block mb-4">
+                              <!-- Portrait Image -->
+                              <img
+                                 class="rounded-full w-40 h-40 mx-auto object-cover border-4 border-gray-300 dark:border-slate-700/50"
+                                 src="https://i.ibb.co.com/2172Ff35/IMG-20251129-WA0013.jpg" />
+
+                              <!-- Pulse Ring -->
+                              <div
+                                 class="absolute inset-0 rounded-full ring-4 ring-primary ring-offset-4 ring-offset-white dark:ring-offset-slate-900 animate-pulse">
+                              </div>
+                           </div>
+
+                           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-4">Mahadi Hasan Milon</h2>
+                           <p class="text-primary font-medium mt-1">Junior Mern Stack Developer</p>
+
+                           <div class="flex justify-center space-x-4 md:space-x-6 mt-6">
+
+                              <!-- MongoDB -->
+                              <div
+                                 class="skill-box w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 border-[#47A248] dark:bg-[#305E2E] dark:border-none shadow-lg hover:shadow-[0_0_15px_#47A248] dark:hover:shadow-[0_0_15px_#305E2E] transition-shadow duration-300">
+                                 <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                                    class="w-10 h-10" alt="MongoDB" />
+                              </div>
+
+                              <!-- Express -->
+                              <div
+                                 class="skill-box w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 border-gray-900 dark:bg-gray-700 dark:border-none shadow-lg hover:shadow-[0_0_15px_#000000] dark:hover:shadow-[0_0_15px_#FFFFFF] transition-shadow duration-300">
+                                 <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                                    class="w-10 h-10" alt="Express" />
+                              </div>
+
+                              <!-- React -->
+                              <div
+                                 class="skill-box w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 border-[#61DAFB] dark:bg-[#2182A2] dark:border-none shadow-lg hover:shadow-[0_0_15px_#61DAFB] dark:hover:shadow-[0_0_15px_#2182A2] transition-shadow duration-300">
+                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    class="w-10 h-10" alt="React" />
+                              </div>
+
+                              <!-- Node.js -->
+                              <div
+                                 class="skill-box w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 border-[#539E43] dark:bg-[#356B2E] dark:border-none shadow-lg hover:shadow-[0_0_15px_#539E43] dark:hover:shadow-[0_0_15px_#356B2E] transition-shadow duration-300">
+                                 <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                    class="w-10 h-10" alt="Node.js" />
+                              </div>
+
+                           </div>
+
+                        </div>
+                     </div>
+
+                     <!-- Right Column -->
+                     <div class="lg:col-span-2">
+                        <div
+                           class="bg-white/80 dark:bg-slate-900/70 p-8 rounded-lg shadow-lg backdrop-blur-sm border border-gray-200 dark:border-slate-800 space-y-8 relative overflow-hidden h-full">
+
+                           <!-- Decorative circles -->
+                           <div class="absolute -top-10 -right-10 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+                           <div class="absolute bottom-0 -left-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl">
+                           </div>
+
+                           <!-- Sections -->
+                           <div class="relative">
+                              <div class="flex items-center space-x-4 mb-3">
+                                 <div
+                                    class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                 </div>
+                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Hello There!</h3>
+                              </div>
+                              <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                 I'm a <span class="font-semibold text-primary">Frontend Developer</span> skilled in
+                                 <span class="font-semibold text-primary">React.js</span> and modern <span
+                                    class="font-semibold text-primary">JavaScript</span>, passionate about building
+                                 clean,
+                                 responsive, and user-friendly web interfaces.
+                              </p>
+                           </div>
+
+                           <div class="relative">
+                              <div class="flex items-center space-x-4 mb-3">
+                                 <div
+                                    class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                                    <span class="material-symbols-outlined">school</span>
+                                 </div>
+                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Education</h3>
+                              </div>
+                              <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                 Currently pursuing my Bachelor's in <span
+                                    class="font-semibold text-gray-900 dark:text-gray-300">Computer Science and
+                                    Engineering</span>
+                                 at Green University of Bangladesh, where I'm building a strong foundation in software
+                                 development,
+                                 algorithms, and web technologies.
+                              </p>
+                           </div>
+
+                           <div class="relative">
+                              <div class="flex items-center space-x-4 mb-3">
+                                 <div
+                                    class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                                    <span class="material-symbols-outlined">rocket_launch</span>
+                                 </div>
+                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">What I Do</h3>
+                              </div>
+                              <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                 I enjoy turning ideas into smooth, interactive experiences through efficient code and
+                                 thoughtful
+                                 design. With hands-on experience in building full-stack applications using the <span
+                                    class="font-semibold text-gray-900 dark:text-gray-300">MERN stack</span>, I create
+                                 responsive
+                                 web applications that solve real-world problems.
+                              </p>
+                           </div>
+
+                           <div class="relative">
+                              <div class="flex items-center space-x-4 mb-3">
+                                 <div
+                                    class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                                    <span class="material-symbols-outlined">track_changes</span>
+                                 </div>
+                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Goals</h3>
+                              </div>
+                              <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                 I'm seeking opportunities to apply my skills, grow with a collaborative team, and
+                                 contribute to
+                                 meaningful digital products. I believe in continuous learning and staying updated with
+                                 the latest
+                                 web technologies and best practices.
+                              </p>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </main>
+
+
+         </div>
+      </div>
+   </section>
+
+
+   <section id="technologies"
+      class=" font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 antialiased">
+      <div class="relative min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+         <div class="absolute inset-0 bg-background-light dark:bg-[#110e19] z-0">
+            <div
+               class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+            </div>
+         </div>
+         <div class="w-full mx-auto z-10 space-y-12 py-10">
+
+            <!-- Heading -->
+            <header class="mb-16">
+               <div class="flex items-center justify-center gap-6">
+                  <!-- Left line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-l from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+                  <!-- Title with gradient text -->
+                  <h1
+                     class="text-center text-sm font-bold tracking-widest uppercase bg-clip-text text-transparent 
+                                       bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-cyan-400 dark:via-purple-400 dark:to-pink-400">
+                     Technologies
+                  </h1>
+
+                  <!-- Right line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-r from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+               </div>
+            </header>
+
+
+            <div class="flex flex-col items-center space-y-16">
+
+               <!-- ⭐ ICON GRID (All Skills Added) -->
+               <div class="flex flex-wrap justify-center gap-4 max-w-4xl">
+
+                  <!-- JAVASCRIPT -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- PYTHON -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- HTML5 -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- CSS3 -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- TAILWIND -->
+                  <div class="skill-box">
+                     <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- REACT -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- VITE -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- REACT ROUTER -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- AXIOS -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- RESPONSIVE -->
+                  <div class="skill-box">
+                     <img src="https://api.iconify.design/ic:baseline-devices.svg?color=%2310b981" class="skill-icon" />
+                  </div>
+
+                  <!-- NODE -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- EXPRESS -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- DJANGO -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- VS CODE -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- GIT -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- POSTMAN -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- NPM -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- MONGODB -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- JWT -->
+                  <div class="skill-box">
+                     <img src="https://cdn.worldvectorlogo.com/logos/jwt-3.svg" class="skill-icon" />
+                  </div>
+
+                  <!-- FIGMA -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- PIXSO -->
+                  <div class="skill-box">
+                     <img src="https://pbs.twimg.com/media/FhkZv7KVQAAAINF.png" class="skill-icon" />
+                  </div>
+
+                  <!-- SHADCN -->
+                  <div class="skill-box">
+                     <img src="https://ui.shadcn.com/favicon.ico" class="skill-icon rounded-lg" />
+                  </div>
+
+                  <!-- DAISY UI -->
+                  <div class="skill-box">
+                     <img src="https://daisyui.com/favicon.ico" class="skill-icon rounded-lg" />
+                  </div>
+
+                  <!-- FRAMER MOTION -->
+                  <div class="skill-box">
+                     <img src="https://i.ibb.co/wF9z8X3q/pngwing-com.png" class="skill-icon" />
+                  </div>
+
+                  <!-- NETLIFY -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- CLOUDFLARE -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- SURGE -->
+                  <div class="skill-box">
+                     <img src="https://avatars.githubusercontent.com/u/11304412?s=200&v=4"
+                        class="skill-icon rounded-lg" />
+                  </div>
+
+                  <!-- VERCEL -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
+                        class="skill-icon" />
+                  </div>
+
+                  <!-- FIREBASE -->
+                  <div class="skill-box">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                        class="skill-icon" />
+                  </div>
+
+               </div>
+               <!-- ⭐ ROOT WRAPPER (Keeps both parts joined) -->
+               <div class="w-full flex flex-col items-center">
+
+                  <!-- ⭐ Decorative Lines (Thin, single dag) -->
+                  <div class="relative w-full max-w-4xl mx-auto h-20 -mb-8 flex justify-center">
+                     <svg class="absolute bottom-0 h-20 w-full" preserveAspectRatio="none" viewBox="0 0 400 100">
+                        <!-- Thin subtle lines -->
+                        <path d="M10 0 C10 50, 190 50, 190 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+                        <path d="M70 0 C70 50, 190 50, 185 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+                        <path d="M130 0 C130 50, 200 50, 195 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+                        <path d="M190 0 C190 50, 200 50, 200 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+                        <path d="M250 0 C250 50, 205 50, 205 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+                        <path d="M310 0 C310 50, 210 50, 210 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+                        <!-- New right-side line -->
+                        <path d="M370 0 C370 50, 220 50, 220 100" stroke="url(#grad)" stroke-width="0.3" fill="none" />
+
+                        <defs>
+                           <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stop-color="#A3A3A3" stop-opacity="0.2" />
+                              <stop offset="100%" stop-color="#A3A3A3" stop-opacity="0.9" />
+                           </linearGradient>
+                        </defs>
+                     </svg>
+                  </div>
+
+
+
+                  <!-- ⭐ Center Logo (Touching SVG with no gap) -->
+                  <div class="relative flex items-center justify-center w-32 h-32 md:w-40 md:h-40 mt-0">
+                     <div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl"></div>
+
+                     <div
+                        class="relative flex items-center justify-center w-24 h-24 md:w-28 md:h-28 backdrop-blur-md bg-white/30 dark:bg-gray-800/40 rounded-full border border-white/20 shadow-lg">
+                        <svg class="h-10 w-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                           stroke-width="2">
+                           <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                        </svg>
+                     </div>
+                  </div>
+
+               </div>
+
+
+            </div>
+
+         </div>
+   </section>
+
+   <section id="projects"
+      class=" font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 antialiased">
+      <div class="relative min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+         <div class="absolute inset-0 bg-background-light dark:bg-[#110e19] z-0">
+            <div
+               class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+            </div>
+         </div>
+         <div class="w-full mx-auto z-10 py-10">
+
+            <!-- Heading -->
+            <header class="mb-16">
+               <div class="flex items-center justify-center gap-6">
+                  <!-- Left line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-l from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+                  <!-- Title with gradient text -->
+                  <h1
+                     class="text-center text-sm font-bold tracking-widest uppercase bg-clip-text text-transparent 
+                                                   bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-cyan-400 dark:via-purple-400 dark:to-pink-400">
+                     Projects
+                  </h1>
+
+                  <!-- Right line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-r from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+               </div>
+            </header>
+            <main>
+               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div
+                     class="glass-effect bg-white/50 dark:bg-slate-800/50 p-6 rounded-lg shadow-lg border border-white/20 dark:border-slate-700/50 flex flex-col transition-transform duration-300 hover:-translate-y-2">
+                     <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-md mb-6">
+                        <img alt="Abstract gradient for project preview"
+                           class="w-full h-full object-cover rounded-md opacity-0"
+                           src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4fph7NH9Taz_C9SE3ZdudLH9UFFeH2GkMfqFTxAf6jaP102TKIQui-VLwNVwHOLANOItvLzIsh7vy0nZ9Vg7hId25ESC4OjSsvKPPNpDqZ1L_AgfxFTb7WqRyfk9QrH9vOKm2vOeAzucs4l54CHsRAO8UW1CBs19aVM9fwYHDCoGplDVKhlDIC6Mz1E5I36iOBbzE8JhdwRC1if9bjrd6aSlbJqbQO2ScjKvZvkcZZQo-3sHpPaiqs_UlNv5RwQ6Vd8yHTYlc4a4r" />
+                     </div>
+                     <div class="flex-grow">
+                        <div class="h-4 w-3/4 bg-slate-300 dark:bg-slate-600 rounded-full mb-3"></div>
+                        <div class="h-4 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full mb-6"></div>
+                     </div>
+                     <div class="flex justify-between items-center mt-auto">
+                        <div class="px-3 py-1 bg-slate-200 dark:bg-slate-700/80 rounded-full">
+                           <div class="h-3 w-16 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                           <a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                              href="#">
+                              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </a>
+                           <a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                              href="#">
+                              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                 </path>
+                              </svg>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <div
+                     class="glass-effect bg-white/50 dark:bg-slate-800/50 p-6 rounded-lg shadow-lg border border-white/20 dark:border-slate-700/50 flex flex-col transition-transform duration-300 hover:-translate-y-2">
+                     <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-md mb-6">
+                        <img alt="Abstract gradient for project preview"
+                           class="w-full h-full object-cover rounded-md opacity-0"
+                           src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1Z-xCmnGBFhTuNvB0rV4TsES79zD-e0CaDElNcN6gyiAFhlXlv7jHpfMuNZkipoNf8OWmoiHsGpNvw8BekaJ5r95OpoTzwtAIhYRGsEMBWJrciO6U0YD4_J8UOJcRflmDo6HN6iH0LrOlO94n7QSLo7BW_zS5GAzZYSdS1BX68tNKiahJYu5DVW-TsUueScGPB9j-0_iVNEtLtS76oJe5oUqi4BFsuK622X2FwmMmIxbjZPEqU-PQ99e1u7GY5TcQGK4ao4PuIrxe" />
+                     </div>
+                     <div class="flex-grow">
+                        <div class="h-4 w-3/4 bg-slate-300 dark:bg-slate-600 rounded-full mb-3"></div>
+                        <div class="h-4 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full mb-6"></div>
+                     </div>
+                     <div class="flex justify-between items-center mt-auto">
+                        <div class="px-3 py-1 bg-slate-200 dark:bg-slate-700/80 rounded-full">
+                           <div class="h-3 w-16 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                           <a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                              href="#">
+                              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </a>
+                           <a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                              href="#">
+                              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                 </path>
+                              </svg>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <div
+                     class="glass-effect bg-white/50 dark:bg-slate-800/50 p-6 rounded-lg shadow-lg border border-white/20 dark:border-slate-700/50 flex flex-col transition-transform duration-300 hover:-translate-y-2">
+                     <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-md mb-6">
+                        <img alt="Abstract gradient for project preview"
+                           class="w-full h-full object-cover rounded-md opacity-0"
+                           src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtbgaZYKGG2dpKkNCaP1FXT2yPfPiJATvcS3Sjg-glMpinXDUZTW3kS236F5F0Lbp9xVSnYZ_PMsMiowJXH-NWaeEDO34QpCeY6V6QnMtvhJy_9gToToRsqDZj1R1GRAyWhVic3s-9udIUGcYb0_xEouLXrHPdrJos3Twz3fH2OIgcWKljuk320QRDCrHMihlwDdomuF3ADCrY3wA_f8D08Ftq2fsIX8sGJum7SWjuWGxkzGiUcD8LFj7xQ_ija3NTlaAgUFLynwp1" />
+                     </div>
+                     <div class="flex-grow">
+                        <div class="h-4 w-3/4 bg-slate-300 dark:bg-slate-600 rounded-full mb-3"></div>
+                        <div class="h-4 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full mb-6"></div>
+                     </div>
+                     <div class="flex justify-between items-center mt-auto">
+                        <div class="px-3 py-1 bg-slate-200 dark:bg-slate-700/80 rounded-full">
+                           <div class="h-3 w-16 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                           <a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                              href="#">
+                              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </a>
+                           <a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                              href="#">
+                              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                 </path>
+                              </svg>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </main>
+         </div>
+      </div>
+      </div>
+
+   </section>
+
+   <section id="contact"
+      class=" font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 antialiased">
+      <div class="relative min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+         <div class="absolute inset-0 bg-background-light dark:bg-[#110e19] z-0">
+            <div
+               class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+            </div>
+         </div>
+         <div class="w-full mx-auto z-10 py-10">
+
+            <!-- Heading -->
+            <header class="mb-16">
+               <div class="flex items-center justify-center gap-6">
+                  <!-- Left line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-l from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+                  <!-- Title with gradient text -->
+                  <h1
+                     class="text-center text-sm font-bold tracking-widest uppercase bg-clip-text text-transparent 
+                                                   bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-cyan-400 dark:via-purple-400 dark:to-pink-400">
+                     Contact
+                  </h1>
+
+                  <!-- Right line -->
+                  <div
+                     class="flex-grow h-px bg-gradient-to-r from-blue-300/50 to-transparent dark:from-slate-700/50 dark:to-transparent">
+                  </div>
+
+               </div>
+            </header>
+            <main class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+               <div class="space-y-8">
+                  <div>
+                     <h2
+                        class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500 mb-4">
+                        Drop me a message
+                     </h2>
+                     <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        A web app for visualizing personalized music data. View your top artists, top tracks, recently
+                        played
+                        tracks, and detailed audio information about each track.
+                     </p>
+                  </div>
+                  <div class="space-y-8">
+
+                     <!-- Social Grid - Totally new style -->
+                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+
+                        <!-- Facebook -->
+                        <a href="https://facebook.com/your-username" target="_blank"
+                           class="group relative flex flex-col items-center p-6 bg-white/30 dark:bg-gray-900/40 rounded-3xl shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300">
+                           <div
+                              class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600/20 group-hover:bg-blue-600/60 transition-colors duration-300">
+                              <svg class="w-6 h-6 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
+                                 <path
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5 3.657 9.128 8.438 9.879v-6.987h-2.54v-2.892h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33v6.987C18.343 21.128 22 17 22 12z" />
+                              </svg>
+                           </div>
+                           <p class="mt-3 text-blue-800 font-semibold text-sm  transition-colors">
+                              Facebook</p>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:your-email@example.com" target="_blank"
+                           class="group relative flex flex-col items-center p-6 bg-white/30 dark:bg-gray-900/40 rounded-3xl shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300">
+                           <div
+                              class="w-14 h-14 flex items-center justify-center rounded-full bg-red-500/20 group-hover:bg-red-500/60 transition-colors duration-300">
+                              <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                 <path
+                                    d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+                              </svg>
+                           </div>
+                           <p class="mt-3 text-red-500 font-semibold text-sm  transition-colors">
+                              Email</p>
+                        </a>
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/your-number" target="_blank"
+                           class="group relative flex flex-col items-center p-6 bg-white/30 dark:bg-gray-900/40 rounded-3xl shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300">
+                           <div
+                              class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500/10 group-hover:bg-green-500/30 transition-colors duration-300">
+                              <svg class="w-6 h-6 text-green-700" fill="currentColor" viewBox="0 0 24 24">
+                                 <path
+                                    d="M20.52 3.48a11.928 11.928 0 0 0-16.99 0 11.907 11.907 0 0 0-3.51 8.48c.06 2.06.57 4.08 1.53 5.91L2 22l4.3-1.13a11.916 11.916 0 0 0 5.91 1.53c2.83 0 5.52-1.11 7.54-3.13a11.916 11.916 0 0 0 3.13-7.54c0-3.23-1.26-6.26-3.54-8.54zm-8.52 14.02a9.77 9.77 0 0 1-5.18-1.44l-.37-.22-3.1.82.82-3.02-.24-.38a9.781 9.781 0 0 1 1.44-12.38 9.773 9.773 0 0 1 13.84 0c3.85 3.85 3.85 10.1 0 13.94a9.772 9.772 0 0 1-7.41 3.66zm5.13-7.3c-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14s-.73.91-.9 1.1c-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.22-1.37-.82-.73-1.37-1.64-1.53-1.92-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.16.05-.31-.03-.46-.08-.14-.64-1.54-.88-2.12-.23-.55-.46-.48-.64-.49l-.55-.01c-.18 0-.46.07-.7.33s-.92.9-.92 2.19.94 2.54 1.07 2.72c.14.18 1.86 2.85 4.5 3.97 2.64 1.12 2.64.75 3.11.7.47-.05 1.52-.62 1.73-1.22.21-.61.21-1.13.15-1.24-.06-.11-.24-.18-.5-.32z" />
+                              </svg>
+                           </div>
+                           <p class="mt-3 text-green-500 font-semibold text-sm  transition-colors">
+                              WhatsApp</p>
+                        </a>
+
+
+                        <!-- LinkedIn -->
+                        <a href="https://linkedin.com/in/your-username" target="_blank"
+                           class="group relative flex flex-col items-center p-6 bg-white/30 dark:bg-gray-900/40 rounded-3xl shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300">
+                           <div
+                              class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-900/20 group-hover:bg-blue-900/60 transition-colors duration-300">
+                              <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                 <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                              </svg>
+                           </div>
+                           <p class="mt-3 text-blue-600 font-semibold text-sm  transition-colors">
+                              LinkedIn</p>
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/your-username" target="_blank"
+                           class="group relative flex flex-col items-center p-6 bg-white/30 dark:bg-gray-900/40 rounded-3xl shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300">
+                           <div
+                              class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-500/20 group-hover:bg-blue-400/40 transition-colors duration-300">
+                              <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                 <path
+                                    d="M9.998 16.828l-.407 4.63c.583 0 .83-.25 1.13-.55l2.71-2.54 5.625 4.145c1.03.572 1.76.274 2.02-.958L23 3.99c.335-1.65-.6-2.315-1.626-1.924L1.818 9.642c-1.52.593-1.5 1.426-.26 1.813l4.57 1.426 10.398-6.524c.492-.308.94-.138.57.192l-8.093 7.833z" />
+                              </svg>
+                           </div>
+                           <p class="mt-3 text-blue-400 font-semibold text-sm  transition-colors">
+                              Telegram</p>
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/your-username" target="_blank"
+                           class="group relative flex flex-col items-center p-6 bg-white/30 dark:bg-gray-900/40 rounded-3xl shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300">
+                           <div
+                              class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-800/20 group-hover:bg-gray-700/50 transition-colors duration-300">
+                              <svg class="w-6 h-6 text-gray-200" fill="currentColor" viewBox="0 0 24 24">
+                                 <path clip-rule="evenodd" fill-rule="evenodd"
+                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" />
+                              </svg>
+                           </div>
+                           <p class="mt-3 text-gray-500 font-semibold text-sm  transition-colors">
+                              GitHub</p>
+                        </a>
+
+                     </div>
+                  </div>
+
+
+
+               </div>
+               <div
+                  class="bg-white/80 dark:bg-gray-900/20 p-8 rounded-2xl border border-gray-200 dark:border-gray-800/50 shadow-2xl shadow-black/20 backdrop-blur-sm">
+                  <form class="space-y-6">
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2"
+                           for="name">Name</label>
+                        <input
+                           class="w-full bg-white border border-gray-300 dark:bg-gray-900/50 dark:border-gray-800/60 rounded-lg py-3 px-4 text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-200"
+                           id="name" name="name" placeholder="Soni kumari" type="text" />
+                     </div>
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2"
+                           for="email">Email</label>
+                        <input
+                           class="w-full bg-white border border-gray-300 dark:bg-gray-900/50 dark:border-gray-800/60 rounded-lg py-3 px-4 text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-200"
+                           id="email" name="email" placeholder="Soniyo344@gmail.com" type="email" />
+                     </div>
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2"
+                           for="message">Message</label>
+                        <textarea
+                           class="w-full bg-white border border-gray-300 dark:bg-gray-900/50 dark:border-gray-800/60 rounded-lg py-3 px-4 text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-200"
+                           id="message" name="message" placeholder="How can I help?" rows="4"></textarea>
+                     </div>
+                     <div>
+                        <button href="#" class="flex items-center justify-center px-6 py-3
+          font-semibold rounded-xl text-primary
+          bg-white/30 dark:bg-gray-800/40 backdrop-blur-md
+          border border-white/20 shadow-md
+          hover:shadow-[0_0_7px_#8c52ff] transition-shadow duration-300">
+                           Send Message
+                        </button>
+
+
+                     </div>
+                  </form>
+               </div>
+
+            </main>
+         </div>
+      </div>
+
+   </section>
+   <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-700 py-12">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
+
+         <!-- Left: Name & Copyright -->
+         <div class="text-center lg:text-left">
+            <p class="text-gray-700 dark:text-gray-300 text-sm">
+               &copy; 2025 <span class="font-bold text-primary">Mahadi Hasan Milon</span>. All rights reserved.
+            </p>
+         </div>
+
+         <!-- Center: Social Links -->
+         <div class="flex items-center gap-4">
+            <!-- GitHub -->
+            <a href="https://github.com/your-username" target="_blank"
+               class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200/30 dark:bg-gray-800/40 text-gray-800 dark:text-gray-200 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 transition-colors">
+               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path clip-rule="evenodd" fill-rule="evenodd"
+                     d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" />
+               </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/your-username" target="_blank"
+               class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200/30 dark:bg-gray-800/40 text-gray-800 dark:text-gray-200 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 transition-colors">
+               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                     d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                  </path>
+               </svg>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:your-email@example.com"
+               class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200/30 dark:bg-gray-800/40 text-gray-800 dark:text-gray-200 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 transition-colors">
+               <span class="material-symbols-outlined">mail</span>
+            </a>
+         </div>
+
+         <!-- Right: Credit -->
+         <div class="text-center lg:text-right text-gray-500 dark:text-gray-400 text-sm">
+            Made with 💖 using MERN & Tailwind CSS
+         </div>
+
+      </div>
+   </footer>
+
+
+   <!-- Scroll to Top Button -->
+   <!-- Floating Scroll-to-Top Button -->
+   <button id="scroll-top-btn" class="fixed bottom-12 right-12 w-14 h-14 rounded-full z-10
+               bg-gradient-to-tr from-blue-500/30 via-purple-500/30 to-pink-500/30
+               backdrop-blur-md border border-white/20 dark:border-gray-700/20
+               flex items-center justify-center text-white shadow-lg
+               hover:shadow-xl hover:ring-2 hover:ring-white/40 dark:hover:ring-gray-400/40
+               transition duration-300 animate-bounce">
+      <span class="material-symbols-outlined text-2xl text-white">arrow_upward</span>
+   </button>
+   <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuBtn.addEventListener('click', () => {
+         mobileMenu.classList.toggle('hidden');
+      });
+
+      // Theme Toggle
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+
+      themeToggleBtn.addEventListener('click', () => {
+         document.documentElement.classList.toggle('dark');
+         themeIcon.textContent = document.documentElement.classList.contains('dark') ? 'dark_mode' : 'light_mode';
+      });
+
+
+      // Scroll top
+      const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+      scrollTopBtn.addEventListener('click', () => {
+         window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // smooth scrolling
+         });
+      });
+   </script>
+
+
+
+</body>
+
+</html>
