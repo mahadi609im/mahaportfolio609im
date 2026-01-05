@@ -1,0 +1,1464 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Perspective utilities for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-500 {
+  perspective: 500px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.8),
+      0 0 30px rgba(99, 102, 241, 0.4);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #63d5ff, #8c52ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skill-box {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .skill-box {
+  background: rgba(31, 41, 55, 0.4);
+}
+
+.skill-box:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.skill-icon {
+  height: 40px;
+  width: 40px;
+  transition: transform 0.3s ease;
+}
+
+/* Enhanced Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Enhanced marquee animations with better performance */
+.skill-box-modern {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+  contain: layout style paint;
+}
+
+.skill-box-modern:hover {
+  transform-style: preserve-3d;
+}
+
+/* Enhanced marquee container with pause on hover */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Modern skill box subtle border glow */
+.skill-box-modern::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(99, 102, 241, 0.08),
+    transparent
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.skill-box-modern:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced progress bar with subtle animations */
+.progress-bar-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progress-shine 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes progress-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Smooth hover transitions for all elements */
+.skill-box-modern,
+.skill-box-modern * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced backdrop blur effects */
+.skill-box-modern {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Responsive adjustments for marquee */
+@media (max-width: 768px) {
+  .skill-box-modern {
+    min-width: 80px;
+    padding: 10px;
+  }
+
+  .skill-box-modern img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-box-modern {
+    min-width: 70px;
+    padding: 8px;
+  }
+
+  .skill-box-modern img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Enhanced hover effects for progress percentage display */
+.skill-box-modern:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Modern progress percentage tooltip styling */
+.progress-tooltip {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  transform-origin: center bottom;
+}
+
+.progress-tooltip::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Enhanced glow effect for progress tooltips */
+@keyframes tooltip-glow {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(99, 102, 241, 0.4);
+  }
+}
+
+/* Smooth entrance animation for tooltips */
+@keyframes tooltip-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating animation for particles */
+@keyframes float-particle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+.floating-particle {
+  animation: float-particle 3s ease-in-out infinite;
+}
+
+/* Enhanced progress bar animations */
+@keyframes progress-shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.progress-shine {
+  animation: progress-shine 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Ripple effect animation */
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  animation: ripple 1s ease-out infinite;
+}
+
+/* Enhanced hover states for better UX */
+.skill-box-modern:hover .skill-icon img {
+  filter: brightness(1.2) saturate(1.3)
+    drop-shadow(0 0 12px rgba(99, 102, 241, 0.6));
+}
+
+/* Smooth transitions for all interactive elements */
+.skill-box-modern * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced backdrop blur effects */
+.skill-box-modern {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Gradient text animation */
+@keyframes gradient-text {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text-animated {
+  background-size: 200% 200%;
+  animation: gradient-text 3s ease infinite;
+}
+
+/* Enhanced shadow effects */
+.skill-box-modern:hover {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(99, 102, 241, 0.1);
+}
+
+/* Enhanced Skill Box Styles */
+.skill-box2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  backdrop-filter: blur(50px);
+  border: 1px solid rgba(186, 108, 246, 0.08);
+  border-radius: 14px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.skill-icon2 {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.8);
+  transition: all 0.4s ease;
+}
+
+.skill-box2:hover {
+  transform: translateY(-8px) rotateX(10deg) rotateY(10deg);
+  background: rgba(144, 77, 244, 0.209);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.4),
+    0 0 0 1px rgba(99, 102, 241, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.skill-box2:hover .skill-icon2 {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.1) rotateZ(5deg);
+}
+
+.skill-box2::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 50;
+}
+
+.skill-box2::after {
+  content: '';
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #6366f1 transparent transparent transparent;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-box2:hover::before,
+.skill-box2:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Enhanced card hover effects */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px) rotateX(5deg);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Glowing border animation */
+@keyframes glow-border {
+  0%,
+  100% {
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+}
+
+.animate-glow-border {
+  animation: glow-border 2s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .skill-box2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .skill-icon2 {
+    width: 24px;
+    height: 24px;
+  }
+
+  .skill-box2::before {
+    font-size: 9px !important;
+    padding: 4px 8px !important;
+  }
+
+  .skill-box2:hover {
+    transform: translateY(-4px) rotateX(5deg) rotateY(5deg);
+  }
+}
+
+/* Smooth scrolling enhancement */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Focus styles for accessibility */
+.skill-box2:focus-visible,
+.social-link:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Loading animation for images */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+/* Responsive enhancements for marquee */
+@media (max-width: 768px) {
+  .skill-box-modern {
+    min-width: 100px;
+    padding: 12px;
+  }
+
+  .skill-box-modern img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-box-modern h3 {
+    font-size: 12px;
+  }
+}
+
+/* Performance optimizations */
+.skill-box-modern {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .skill-box-modern,
+  .animate-marquee,
+  .floating-particle,
+  .progress-shine,
+  .ripple-effect {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .skill-box-modern:hover {
+    transform: scale(1.05) !important;
+  }
+}
+/* Enhanced square skill box styles */
+.skill-box-modern.square {
+  aspect-ratio: 1;
+  min-width: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+/* Circular progress bar enhancements */
+.circular-progress {
+  transform: rotate(-90deg);
+}
+
+.circular-progress circle {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tooltip enhancements */
+.skill-tooltip {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.skill-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* Enhanced hover effects for square cards */
+.skill-box-modern:hover {
+  transform: translateY(-12px) scale(1.15) rotateY(10deg) rotateX(5deg);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Progress percentage center alignment */
+.progress-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+}
+
+/* Smooth transitions for all elements */
+.skill-box-modern,
+.skill-box-modern * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile responsive adjustments for square cards */
+@media (max-width: 640px) {
+  .skill-box-modern {
+    min-width: 80px;
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+  }
+
+  .skill-box-modern img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .circular-progress svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .skill-tooltip {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+/* Enhanced hover state for skill boxes with modern effects */
+.skill-box-modern:hover .progress-tooltip {
+  animation: tooltip-entrance 0.3s ease-out forwards;
+}
+
+/* Subtle pulse effect for percentage text */
+@keyframes percentage-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 0px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 8px currentColor;
+  }
+}
+
+.skill-box-modern:hover .progress-tooltip span {
+  animation: percentage-pulse 2s ease-in-out infinite;
+}
+
+/* Responsive enhancements for progress tooltips */
+@media (max-width: 640px) {
+  .progress-tooltip {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .skill-box-modern:hover {
+    transform: translateY(-4px) scale(1.03);
+  }
+}
+/* Energy Flow Animation Styles */
+.skill-box2.connected {
+  position: relative;
+  animation: energy-connected 2s ease-in-out infinite;
+}
+
+@keyframes energy-connected {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.6),
+      0 0 35px rgba(139, 92, 246, 0.4);
+  }
+}
+
+/* Energy path glow effect */
+.energy-path {
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.6));
+}
+
+/* Enhanced connection feedback */
+.skill-box2.connected .skill-icon2 {
+  filter: brightness(1.2) saturate(1.3)
+    drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+}
+
+/* Energy source pulse effect */
+@keyframes energy-source-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.8),
+      0 0 60px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.energy-source-active {
+  animation: energy-source-pulse 2s ease-in-out infinite;
+}
+
+/* Smooth transitions for energy effects */
+.skill-box2 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations for energy animations */
+.energy-path,
+.skill-box2.connected,
+.energy-source-active {
+  will-change: transform, opacity, box-shadow;
+  contain: layout style paint;
+}
+
+/* Responsive adjustments for energy effects */
+@media (max-width: 768px) {
+  .energy-path {
+    stroke-width: 1.5;
+  }
+
+  .skill-box2.connected {
+    animation-duration: 2.5s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-box2.connected,
+  .energy-source-active {
+    animation: none !important;
+  }
+
+  .energy-path {
+    opacity: 0.5 !important;
+  }
+}
+/* Enhanced Energy Flow Visual Effects */
+@keyframes energy-particle {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1) rotate(315deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.energy-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.8), transparent);
+  border-radius: 50%;
+  animation: energy-particle 1.5s ease-out forwards;
+}
+
+/* Enhanced glow for connected skills */
+.skill-box2.connected::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.3),
+    rgba(139, 92, 246, 0.3),
+    rgba(99, 102, 241, 0.3)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  animation: connection-glow 2s ease-in-out infinite;
+}
+
+@keyframes connection-glow {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+/* Smooth energy source activation */
+.energy-source-active::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(99, 102, 241, 0.4),
+    rgba(139, 92, 246, 0.6),
+    rgba(99, 102, 241, 0.4)
+  );
+  border-radius: 50%;
+  z-index: -1;
+  animation: energy-source-rotation 3s linear infinite;
+}
+
+@keyframes energy-source-rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Enhanced Categorized Skills Styles */
+.skill-category-badge {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-category-badge:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Enhanced skill box animations for categorized view */
+.skill-box-modern {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-box-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.skill-box-modern:hover::before {
+  left: 100%;
+}
+
+/* Category indicator animations */
+.category-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-indicator::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, transparent, currentColor, transparent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: category-pulse 2s ease-in-out infinite;
+}
+
+@keyframes category-pulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+/* Enhanced progress bar with category theming */
+.progress-bar-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-enhanced::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: progress-sweep 3s ease-in-out infinite;
+}
+
+@keyframes progress-sweep {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Responsive enhancements for categorized skills */
+@media (max-width: 768px) {
+  .skill-category-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .skill-box-modern {
+    min-width: 85px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-category-badge {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+
+  .skill-box-modern {
+    min-width: 75px;
+    padding: 10px;
+  }
+}
+/* Filterable Skills Grid Styles */
+.skill-card-filterable {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.skill-card-filterable::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.skill-card-filterable:hover::before {
+  left: 100%;
+}
+
+/* Filter button styles */
+.filter-button {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+.filter-button.active::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, transparent, currentColor, transparent);
+  border-radius: inherit;
+  opacity: 0.2;
+  animation: filter-button-glow 2s ease-in-out infinite;
+}
+
+@keyframes filter-button-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.02);
+  }
+}
+
+/* Enhanced grid layout */
+.filterable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .filterable-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card-filterable {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filterable-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skill-card-filterable {
+    padding: 0.75rem;
+  }
+}
+
+/* Animation performance optimizations */
+.skill-card-filterable,
+.filter-button {
+  will-change: transform, opacity;
+  contain: layout style paint;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .skill-card-filterable,
+  .filter-button {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .skill-card-filterable::before {
+    display: none;
+  }
+}
+/* Enhanced Filter Button Animations */
+.filter-button-active {
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-button-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: button-shine 2s ease-in-out infinite;
+}
+
+@keyframes button-shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Skill card hover enhancements */
+.skill-card-filterable:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Category-specific hover effects */
+.skill-card-filterable[data-category='Frontend']:hover {
+  box-shadow: 0 20px 40px -10px rgba(97, 218, 251, 0.3);
+}
+
+.skill-card-filterable[data-category='Backend']:hover {
+  box-shadow: 0 20px 40px -10px rgba(51, 153, 51, 0.3);
+}
+
+.skill-card-filterable[data-category='Tools']:hover {
+  box-shadow: 0 20px 40px -10px rgba(255, 108, 55, 0.3);
+}
+
+.skill-card-filterable[data-category='Design']:hover {
+  box-shadow: 0 20px 40px -10px rgba(242, 78, 30, 0.3);
+}
+
+.skill-card-filterable[data-category='UI Libraries']:hover {
+  box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.3);
+}
+
+.skill-card-filterable[data-category='Deployment']:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 173, 173, 0.3);
+}
+/* Enhanced Filter Panel Styles */
+.filter-panel {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.filter-skills-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-skills-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.filter-skills-button:hover::before {
+  left: 100%;
+}
+
+/* Marquee filter button animations */
+.marquee-filter-button {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.marquee-filter-button.active {
+  transform: scale(1.05);
+}
+
+.marquee-filter-button.active::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, transparent, currentColor, transparent);
+  border-radius: inherit;
+  opacity: 0.2;
+  animation: filter-glow 2s ease-in-out infinite;
+}
+
+@keyframes filter-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.02);
+  }
+}
+
+/* Smooth marquee transitions when filtering */
+.marquee-container {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced filter panel entrance */
+@keyframes filter-panel-slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.filter-panel-enter {
+  animation: filter-panel-slide 0.4s ease-out forwards;
+}
+
+/* Responsive filter panel */
+@media (max-width: 768px) {
+  .filter-skills-button {
+    padding: 12px 20px;
+    font-size: 12px;
+  }
+
+  .marquee-filter-button {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-skills-button {
+    padding: 10px 16px;
+    font-size: 11px;
+  }
+
+  .marquee-filter-button {
+    padding: 6px 10px;
+    font-size: 9px;
+  }
+}
+/* Enhanced center alignment for filter panel */
+.filter-panel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.filter-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Ensure buttons are properly centered on all screen sizes */
+@media (max-width: 768px) {
+  .filter-buttons-wrapper {
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-buttons-wrapper {
+    gap: 0.375rem;
+    padding: 0 0.25rem;
+  }
+}
+/* Project Modal Styles */
+.project-modal-overlay {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.project-modal-content {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* Custom Scrollbar for Modal */
+.project-modal-content .overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.project-modal-content .overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.project-modal-content .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.project-modal-content .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Dark mode scrollbar */
+.dark .project-modal-content .overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dark .project-modal-content .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .project-modal-content .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Smooth scroll behavior */
+.project-modal-content .overflow-y-auto {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Firefox */
+.project-modal-content .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.dark .project-modal-content .overflow-y-auto {
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0.2);
+}
+/* Custom Scrollbar Styles for Project Modal */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.7);
+}
+/* Professional Modal Scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Dark mode scrollbar */
+.dark .custom-scrollbar {
+  scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.7);
+}
